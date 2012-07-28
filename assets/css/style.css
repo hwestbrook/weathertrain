@@ -12,22 +12,27 @@ body {
 	height: 490px;
 	background-color: blue;
 	overflow-y: scroll;
+	font: normal normal normal 1em Arial, sans-serif;
+	color: white;
 }
 
 #firstbus {
-	position: absolute;
 	top: 595px;
 	left: 75px;
-	width: 220px;
-	height: 280px;
 	background-color: red;
 }
 
 #secondbus {
-	position: absolute;
 	top: 595px;
 	left: 345px;
-	width: 220px;
-	height: 280px;
 	background-color: green;
+}
+
+.businfo {
+	position: absolute;
+	font: normal normal normal 2em Arial, sans-serif;
+	color: white;
+	width: 200px;
+	height: 260px;
+	padding: 20px 0px 0px 20px;
 }

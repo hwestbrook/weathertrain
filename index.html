@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">  
     <link rel="apple-touch-icon" href="images/template/engage.png"/>
-	<title>index</title>
+	<title>weathertrain</title>
 	<meta name="author" content="Heath Westbrook">
 	<!-- Date: 2012-07-18 -->
 	
@@ -21,9 +21,11 @@
 <body>
 	<div id="weather">
 	</div>
-	<div id="firstbus">
+	<div id="firstbus" class="businfo">
+		N inbound</br>
 	</div>
-	<div id="secondbus">
+	<div id="secondbus" class="businfo">
+		J inbound</br>
 	</div>
 	
 	<script>
@@ -52,7 +54,7 @@
 		  //find every Tutorial and print the author
 		  $(xml).find("prediction").each(function()
 		  {
-		    $("#firstbus").append($(this).attr("minutes") + "<br />");
+		    $("#firstbus").append($(this).attr("minutes") + " minutes<br />");
 		  });
 
 		}
@@ -73,7 +75,7 @@
 		  //find every Tutorial and print the author
 		  $(xml).find("prediction").each(function()
 		  {
-		    $("#secondbus").append($(this).attr("minutes") + "<br />");
+		    $("#secondbus").append($(this).attr("minutes") + " minutes <br />");
 		  });
 
 		}

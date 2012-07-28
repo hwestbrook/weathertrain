@@ -1,0 +1,33 @@
+body {
+	background: gray url(../media/background.gif) repeat fixed top left;
+	height: 960px;
+	width: 640px;
+}
+
+#weather {
+	position: absolute;
+	top: 75px;
+	left: 75px;
+	width: 490px;
+	height: 490px;
+	background-color: blue;
+	overflow-y: scroll;
+}
+
+#firstbus {
+	position: absolute;
+	top: 595px;
+	left: 75px;
+	width: 220px;
+	height: 280px;
+	background-color: red;
+}
+
+#secondbus {
+	position: absolute;
+	top: 595px;
+	left: 345px;
+	width: 220px;
+	height: 280px;
+	background-color: green;
+}

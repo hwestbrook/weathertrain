@@ -1,0 +1,11 @@
+http -b http://api.wunderground.com/api/406f56b313b47308/geolookup/conditions/forecast/q/CA/San_Francisco.json
+
+http -b http://api.wunderground.com/api/406f56b313b47308/conditions/forecast/q/autoip.json
+
+http -b http://api.wunderground.com/api/406f56b313b47308/conditions/forecast/q/pws:KCASANFR49.json
+
+http -b http://api.wunderground.com/api/406f56b313b47308/conditions/hourly/q/pws:KCASANFR49.json
+
+// this is the weather station for Duboce Triangle
+http -b http://api.wunderground.com/api/406f56b313b47308/conditions/hourly/q/pws:MSFOC1.json
+http -b http://api.wunderground.com/api/406f56b313b47308/conditions/forecast/q/pws:MSFOC1.json

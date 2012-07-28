@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">  
+    <link rel="apple-touch-icon" href="images/template/engage.png"/>
+	<title>index</title>
+	<meta name="author" content="Heath Westbrook">
+	<!-- Date: 2012-07-18 -->
+	
+	<!-- stylesheets -->
+	<link href="assets/css/style.css" rel="stylesheet">
+	
+	<!-- standard JS -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+
+</head>
+<body>
+	<div id="weather">
+	</div>
+	<div id="firstbus">
+	testing	
+	</div>
+	<div id="secondbus">
+	testing	
+	</div>
+	
+	<script>
+		$.getJSON('proxy.php', function(data) {
+
+			$.each(data.forecast.txt_forecast.forecastday, function(i,item) {
+				$('<h3>'+this.title+'</h3>'+'<p>'+this.fcttext+'</p>',this).appendTo("#weather");
+			});
+
+		});
+	</script>
+	
+</body>
+</html>

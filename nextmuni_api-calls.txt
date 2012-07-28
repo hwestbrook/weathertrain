@@ -1,0 +1,7 @@
+~~~Easiest to open these in Chrome
+
+// this gives us predictions for the N line at stop 4448 (inbound N at Church and Duboce)
+http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=sf_muni&r=N&s=4448&useShortTitles=true
+
+// this shows the route of the muni
+http://webservices.nextbus.com/service/publicXMLFeed?command=routeConfig&a=sf-muni&r=N

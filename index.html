@@ -22,20 +22,62 @@
 	<div id="weather">
 	</div>
 	<div id="firstbus">
-	testing	
 	</div>
 	<div id="secondbus">
-	testing	
 	</div>
 	
 	<script>
-		$.getJSON('proxy.php', function(data) {
+		// this calls the weatherunderground API and puts that data into the web page
+		$.getJSON('proxy_weather.php', function(data) {
 
 			$.each(data.forecast.txt_forecast.forecastday, function(i,item) {
 				$('<h3>'+this.title+'</h3>'+'<p>'+this.fcttext+'</p>',this).appendTo("#weather");
 			});
 
 		});
+		
+		// this calls the nextmuni API for the XML file
+		$(document).ready(function()
+		{
+		  $.ajax({
+		    type: "GET",
+		    url: "proxy_train-firstbus.php",
+		    dataType: "xml",
+		    success: parseXMLfirstbus
+		  });
+		});
+		
+		function parseXMLfirstbus(xml)
+		{
+		  //find every Tutorial and print the author
+		  $(xml).find("prediction").each(function()
+		  {
+		    $("#firstbus").append($(this).attr("minutes") + "<br />");
+		  });
+
+		}
+		
+		// this calls the nextmuni API for the XML file
+		$(document).ready(function()
+		{
+		  $.ajax({
+		    type: "GET",
+		    url: "proxy_train-secondbus.php",
+		    dataType: "xml",
+		    success: parseXMLsecondbus
+		  });
+		});
+		
+		function parseXMLsecondbus(xml)
+		{
+		  //find every Tutorial and print the author
+		  $(xml).find("prediction").each(function()
+		  {
+		    $("#secondbus").append($(this).attr("minutes") + "<br />");
+		  });
+
+		}
+		
 	</script>
 	
 </body>

@@ -42,13 +42,13 @@
 		});
 		
 		// setup the variables for the weather and train stop information
-		var weather_station = user_data[4];
-		var firstbus_agency = user_data[5];
-		var firstbus_route = user_data[6];
-		var firstbus_stop = user_data[7];
-		var secondbus_agency = user_data[8];
-		var secondbus_route = user_data[9];
-		var secondbus_stop = user_data[10];
+		var weather_station = user_data[5];
+		var firstbus_agency = user_data[6];
+		var firstbus_route = user_data[7];
+		var firstbus_stop = user_data[8];
+		var secondbus_agency = user_data[9];
+		var secondbus_route = user_data[10];
+		var secondbus_stop = user_data[11];
 		
 		// this builds the URL for the weather station
 		var weather_url = 'proxy_weather.php?weather_station=' + weather_station;

@@ -3,8 +3,13 @@
 // this disallows cross site attacks
 header('Access-Control-Allow-Origin: *');
 
+// get the weather station requested
+$agency = $_GET["agency"];
+$route = $_GET["route"];
+$stop = $_GET["stop"];
+
 // this specifies the API URL call
-$url = "http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=sf-muni&r=N&s=4448&useShortTitles=true";
+$url = "http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=" . $agency . "&r=" . $route . "&s=" . $stop . "&useShortTitles=true";
 
 // this sets up cURL and gets the data
 $ch = curl_init();

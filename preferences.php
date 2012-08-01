@@ -22,13 +22,17 @@
 	<h2>weathertrain:preferences</h2><br />
 	<div id="user-info"></div>
 	<div id="weatherstation">
-		<p id="weatherstationrewrite">No Data</p>
+		<p>Weather Station: <span id="WS" class="edit_WS">No Data</span></p>
 	</div>
 	<div id="firstbus">
-		<p id="firstbusrewrite">No Data</p>
+		<p>First Agency: <span id="FA">No Data</span></p>
+		<p>First Route: <span id="FR">No Data</span></p>
+		<p>First Stop: <span id="FS">No Data</span></p>		
 	</div>
 	<div id="secondbus">
-		<p id="secondbusrewrite">No Data</p>		
+		<p>Second Agency: <span id="SA">No Data</span></p>
+		<p>Second Route: <span id="SR">No Data</span></p>
+		<p>Second Stop: <span id="SS">No Data</span></p>						
 	</div>
 	<p><button id="fb-auth">Login</button></p>
 
@@ -36,6 +40,7 @@
 		window.fbAsyncInit = function() {
 		  
 			var username;
+			var uid;
 		
 			FB.init({ 
 						appId: '398916900171040', 
@@ -59,9 +64,17 @@
 		        userInfo.innerHTML = '<img src="https://graph.facebook.com/' 
 		      + response.id + '/picture">' + response.name;
 		        button.innerHTML = 'Logout';
+						uid = response.id;					
 						
-						// run function to pull data from MySQL
-						addBusAndWeather(response.id);
+						// need to determine if this is a new user or not		
+						if (checkUserNew(uid)) {
+							// put something in her to write new user to MySQL
+							newUserInput();
+						}
+						else {
+							// run function to pull data from MySQL
+							addBusAndWeather(uid);
+						}
 		      });
 
 		      // logout button
@@ -78,8 +91,6 @@
 		      button.onclick = function() {
 		        FB.login(function(response) {
 		      		if (response.authResponse) {
-		            
-								var uid;
 								
 								// get the info from FB
 								FB.api('/me', function(response) {
@@ -94,7 +105,7 @@
 								// need to determine if this is a new user or not		
 								if (checkUserNew(uid)) {
 									// put something in her to write new user to MySQL
-									
+									newUserInput();
 								}
 								else {
 									// run function to pull data from MySQL
@@ -143,13 +154,41 @@
 			var secondbus_agency = user_data[9];
 			var secondbus_route = user_data[10];
 			var secondbus_stop = user_data[11];
+
+			if (weather_station === "") { $("#WS").replaceWith("<span id='WS' class='edit_WS'>click to enter</span>") } 
+			else { $("#WS").replaceWith("<span id='WS' class='edit_WS'>"+weather_station+"</span>") };
+
+			if (firstbus_agency === "") { $("#FA").replaceWith("<span id='FA' class='edit_FA'>click to enter</span>") } 
+			else { $("#FA").replaceWith("<span id='FA' class='edit_FA'>"+firstbus_agency+"</span>") };
+
+			if (firstbus_route === "") { $("#FR").replaceWith("<span id='FR' class='edit_FR'>click to enter</span>") } 
+			else { $("#FR").replaceWith("<span id='FR' class='edit_FR'>"+firstbus_route+"</span>") };
 			
-			$("#weatherstationrewrite").replaceWith(weather_station);
-			$("#firstbusrewrite").replaceWith("Agency: " + firstbus_agency + ", Route: " + firstbus_route + ", Stop: " + firstbus_stop);
-			$("#secondbusrewrite").replaceWith("Agency: " + secondbus_agency + ", Route: " + secondbus_route + ", Stop: " + secondbus_stop);
-						
+			if (firstbus_stop === "") { $("#FS").replaceWith("<span id='FS' class='edit_FS'>click to enter</span>") } 
+			else { $("#FS").replaceWith("<span id='FS' class='edit_FS'>"+firstbus_stop+"</span>") };
+			
+			if (secondbus_agency === "") { $("#SA").replaceWith("<span id='SA' class='edit_SA'>click to enter</span>") } 
+			else { $("#SA").replaceWith("<span id='SA' class='edit_SA'>"+secondbus_agency+"</span>") };
+
+			if (secondbus_route === "") { $("#SR").replaceWith("<span id='SR' class='edit_SR'>click to enter</span>") } 
+			else { $("#SR").replaceWith("<span id='SR' class='edit_SR'>"+secondbus_route+"</span>") };
+			
+			if (secondbus_stop === "") { $("#SS").replaceWith("<span id='SS' class='edit_SS'>click to enter</span>") } 
+			else { $("#SS").replaceWith("<span id='SS' class='edit_SS'>"+secondbus_stop+"</span>") };
+
+			$(document).ready(function() {
+				$('.edit_WS').editable('proxy_change-favorites.php?fb_uid=' + uid);
+				$('.edit_FA').editable('proxy_change-favorites.php?fb_uid=' + uid);
+				$('.edit_FR').editable('proxy_change-favorites.php?fb_uid=' + uid);
+				$('.edit_FS').editable('proxy_change-favorites.php?fb_uid=' + uid);
+				$('.edit_SA').editable('proxy_change-favorites.php?fb_uid=' + uid);
+				$('.edit_SR').editable('proxy_change-favorites.php?fb_uid=' + uid);
+				$('.edit_SS').editable('proxy_change-favorites.php?fb_uid=' + uid);
+			 });
+
 		};
 		
+		// returns true if user is new
 		function checkUserNew(uid) {
 			var user_data = {};
 		
@@ -165,11 +204,32 @@
 			var user_id = user_data[0];
 			
 			if (user_id === uid) {
-				return true;
-			}
-			else {
 				return false;
 			}
+			else {
+				return true;
+			}
+			
+		};
+		
+		// returns true if user is new
+		function newUserInput() {
+			
+			// open connection to FB
+			FB.api('/me', function(response) {
+				// this pushes data to DB using proxy_user-data-push
+				$.ajax({
+				    type: "POST",
+				    url: "proxy_user-data-push.php",
+						data: {
+							fb_uid: response.id,
+							username: response.username,
+							firstname: response.first_name,
+							lastname: response.last_name,
+							email: response.email
+						},
+				});
+  		});
 			
 		};
 		
@@ -178,11 +238,7 @@
 		</script>
 		
 		<script>
-			$(document).ready(function() {
-				$('.edit_1').editable('save.php');
-				$('.edit_2').editable('save.php');
-				$('.edit_3').editable('save.php');
-			 });
+
 		</script>
 		
 </body> 

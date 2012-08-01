@@ -22,12 +22,12 @@
 	<h2>weathertrain:preferences</h2><br />
 	<div id="user-info-b"></div>
 	<div id="weatherstation">
-		<p>Weather Station: <span id="WS" class="edit_WS">No Data</span></p>
+		<p>Weather Station: <span id="WS" class="edit_WS">No Data</span><span class="example"> example: MSFOC1 (click to edit text)</span></p>
 	</div>
 	<div id="firstbus">
-		<p>First Agency: <span id="FA">No Data</span></p>
-		<p>First Route: <span id="FR">No Data</span></p>
-		<p>First Stop: <span id="FS">No Data</span></p>		
+		<p>First Agency: <span id="FA">No Data</span><span class="example"> example: sf-muni</span></p>
+		<p>First Route: <span id="FR">No Data</span><span class="example"> example: N</span></p>
+		<p>First Stop: <span id="FS">No Data</span><span class="example"> example: 4448</span></p>		
 	</div>
 	<div id="secondbus">
 		<p>Second Agency: <span id="SA">No Data</span></p>

@@ -28,6 +28,12 @@ body {
 	background-color: green;
 }
 
+#user-info {
+	position: absolute;
+	top: 10px;
+	left: 75px;
+}
+
 .businfo {
 	position: absolute;
 	font: normal normal normal 2em Arial, sans-serif;

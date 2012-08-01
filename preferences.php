@@ -20,7 +20,7 @@
     
 	<div id="fb-root"></div>
 	<h2>weathertrain:preferences</h2><br />
-	<div id="user-info"></div>
+	<div id="user-info-b"></div>
 	<div id="weatherstation">
 		<p>Weather Station: <span id="WS" class="edit_WS">No Data</span></p>
 	</div>
@@ -35,6 +35,7 @@
 		<p>Second Stop: <span id="SS">No Data</span></p>						
 	</div>
 	<p><button id="fb-auth">Login</button></p>
+	<p><a href="index.php">back to home</a></p>
 
 		<script>
 		window.fbAsyncInit = function() {
@@ -57,7 +58,7 @@
 		    //user is already logged in and connected
 		    if (response.authResponse) {
 
-		      var userInfo = document.getElementById('user-info');
+		      var userInfo = document.getElementById('user-info-b');
 		      
 					// get info from FB
 					FB.api('/me', function(response) {
@@ -80,7 +81,7 @@
 		      // logout button
 					button.onclick = function() {
 						FB.logout(function(response) {
-		          var userInfo = document.getElementById('user-info');
+		          var userInfo = document.getElementById('user-info-b');
 		          userInfo.innerHTML="";
 		    		});
 		    	};
@@ -94,7 +95,7 @@
 								
 								// get the info from FB
 								FB.api('/me', function(response) {
-		          		var userInfo = document.getElementById('user-info');
+		          		var userInfo = document.getElementById('user-info-b');
 		          		userInfo.innerHTML = 
 		                '<img src="https://graph.facebook.com/' 
 		            	+ response.id + '/picture" style="margin-right:5px"/>' 

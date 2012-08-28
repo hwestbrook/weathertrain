@@ -20,16 +20,17 @@
 </head>
 <body>
 	<div id="fb-root"></div>
-	<p><button id="fb-auth">Login</button></p>
-	<p><a href="preferences.php">preferences</a></p>
-	<div id="user-info"></div>
-	
-	<div id="weather"></div>
-	<div id="firstbus" class="businfo">
-		N inbound</br>
-	</div>
-	<div id="secondbus" class="businfo">
-		J inbound</br>
+	<div id="container">
+		<div id="weather"></div>
+		<div id="firstbus" class="businfo">
+		</div>
+		<div id="secondbus" class="businfo">
+		</div>
+		<div id="user">
+			<a href="preferences.php"><div id="preferences"><span id="preferences-text">Preferences</span></div></a>
+			<span id="user-info"></span>
+			<div id="fb-auth"><span id="fb-auth-text">Login</span></div>
+		</div>
 	</div>
 	
 	<script>
@@ -60,7 +61,7 @@
 					FB.api('/me', function(response) {
 		        userInfo.innerHTML = '<img src="https://graph.facebook.com/' 
 		      + response.id + '/picture">' + response.name;
-		        button.innerHTML = 'Logout';
+		        button.innerHTML = "<span id='fb-auth-text'>Logout</span>";
 						uid = response.id;
 						userDataAndWeather(uid);					
 		      });
@@ -75,7 +76,7 @@
 		    } 
 				else {
 		      //user is not connected to your app or logged out
-		      button.innerHTML = 'Login';
+		      button.innerHTML = "<span id='fb-auth-text'>Login</span>";
 		      button.onclick = function() {
 		        FB.login(function(response) {
 		      		if (response.authResponse) {
@@ -168,10 +169,14 @@
 			    $("#firstbus").append($(this).attr("routeTitle") + "<br />");
 			  });
 			
-				//find every prediction and print the time
+
+				//find every prediction and print the time, but limit to 4 results
+				var i = 0;				
 			  $(xml).find("prediction").each(function()
 			  {
-			    $("#firstbus").append($(this).attr("minutes") + " minutes<br />");
+					i++;
+					$("#firstbus").append($(this).attr("minutes") + " minutes<br />");
+					if (i >= 4) { return false; };
 			  });
 
 			}
@@ -197,10 +202,13 @@
 			  {
 			    $("#secondbus").append($(this).attr("routeTitle") + "<br />");
 			  });
-			  //find every prediction and print the time
+				//find every prediction and print the time, but limit to 4 results
+				var i = 0;
 			  $(xml).find("prediction").each(function()
 			  {
+					i++;
 			    $("#secondbus").append($(this).attr("minutes") + " minutes <br />");
+					if (i >= 4) { return false; };					
 			  });
 
 			}

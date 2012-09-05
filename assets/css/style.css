@@ -1,5 +1,5 @@
 body {
-	background: gray url(../media/background.gif) repeat fixed top left;
+	background: gray url(../media/subtle_carbon.png) repeat fixed top left;
 	height: 960px;
 	width: 640px;
 }
@@ -14,7 +14,7 @@ a {
 	left: 60px;
 	width: 520px;
 	height: 840px;
-	background: white url("../media/foreground.png") repeat;
+	background: white url("../media/skelatal_weave.png") repeat;
 /*	overflow-y: scroll;*/
 	font: normal normal normal 1em Arial, sans-serif;
 	color: black;

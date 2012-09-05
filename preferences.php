@@ -19,23 +19,28 @@
 <body> 
     
 	<div id="fb-root"></div>
-	<h2>weathertrain:preferences</h2><br />
-	<div id="user-info-b"></div>
-	<div id="weatherstation">
-		<p>Weather Station: <span id="WS" class="edit_WS">No Data</span><span class="example"> example: MSFOC1 (click to edit text)</span></p>
-	</div>
-	<div id="firstbus">
-		<p>First Agency: <span id="FA">No Data</span><span class="example"> example: sf-muni</span></p>
-		<p>First Route: <span id="FR">No Data</span><span class="example"> example: N</span></p>
-		<p>First Stop: <span id="FS">No Data</span><span class="example"> example: 4448</span></p>		
-	</div>
-	<div id="secondbus">
-		<p>Second Agency: <span id="SA">No Data</span></p>
-		<p>Second Route: <span id="SR">No Data</span></p>
-		<p>Second Stop: <span id="SS">No Data</span></p>						
-	</div>
-	<p><button id="fb-auth">Login</button></p>
-	<p><a href="index.php">back to home</a></p>
+		<div id="container">
+			<h2>weathertrain:preferences</h2><br />
+			<div id="user-info-b"></div>
+			<div id="weatherstation">
+				<p>Weather Station: <span id="WS" class="edit_WS">No Data</span><span class="example"> example: MSFOC1 (click to edit text)</span></p>
+			</div>
+			<div id="firstbus">
+				<p>First Agency: <span id="FA">No Data</span><span class="example"> example: sf-muni</span></p>
+				<p>First Route: <span id="FR">No Data</span><span class="example"> example: N</span></p>
+				<p>First Stop: <span id="FS">No Data</span><span class="example"> example: 4448</span></p>		
+			</div>
+			<div id="secondbus">
+				<p>Second Agency: <span id="SA">No Data</span></p>
+				<p>Second Route: <span id="SR">No Data</span></p>
+				<p>Second Stop: <span id="SS">No Data</span></p>						
+			</div>
+			<div id="user">
+				<a href="index.php"><div id="preferences"><span id="preferences-text">Home</span></div></a>
+				<span id="user-info"></span>
+				<div id="fb-auth"><span id="fb-auth-text">Login</span></div>
+			</div>
+		</div>
 
 		<script>
 		window.fbAsyncInit = function() {

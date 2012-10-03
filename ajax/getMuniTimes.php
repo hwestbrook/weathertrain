@@ -3,7 +3,7 @@
 // this disallows cross site attacks
 header('Access-Control-Allow-Origin: *');
 
-// get the weather station requested
+// fill the variables with the agency route and stop requested
 $agency = $_GET["agency"];
 $route = $_GET["route"];
 $stop = $_GET["stop"];

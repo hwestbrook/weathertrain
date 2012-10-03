@@ -1,128 +1,112 @@
+.footer {
+	background-color: #ffcccc;
+}
+
+.content {
+	background-color: white;
+	top: 85px;
+}
+
+#myTabContent {
+	min-height: 300px;
+}
+
+#transit1_success, #transit2_success {
+	padding-left: 10px;
+}
+
 body {
-	background: gray url(../media/subtle_carbon.png) repeat fixed top left;
-	height: 960px;
-	width: 640px;
+  padding-top: 75px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
 }
 
-a {
-	color: black;
+.welcomeUser {
+  	padding-left: 20px;
+	margin-left: -20px;
+	padding-top: 5px;
+}
+@media (max-width: 979px) {
+	.welcomeUser {
+		padding-left: 10px;
+		margin-left: -5px;
+	}
 }
 
-#container {
+.space {
+	margin-bottom: 10px;
+}
+
+.weather {
+	margin: 15px 0px;
+	padding: 39px 19px 14px;
+	background-color: white;
+	border: 1px solid #DDD;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.weather:after {
+	content: "Weather";
 	position: absolute;
-	top: 60px;
-	left: 60px;
-	width: 520px;
-	height: 840px;
-	background: white url("../media/skelatal_weave.png") repeat;
-/*	overflow-y: scroll;*/
-	font: normal normal normal 1em Arial, sans-serif;
-	color: black;
-	-moz-border-radius: 40px;
-	border-radius: 40px;
-	overflow-y: hidden;
-    overflow-x: hidden;
+	top: 15px;
+	left: 0px;
+	padding: 3px 7px;
+	background-color: whiteSmoke;
+	border: 1px solid #DDD;
+	color: #9DA0A4;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+@media (max-width: 767px) {
+	.weather:after {
+		top: 0px;
+	}
+
 }
 
-#weather {
+.bus {
+	margin: 15px 0px;
+	padding: 39px 19px 14px;
+	background-color: white;
+	border: 1px solid #DDD;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.bus:after {
+	content: "Transit";
 	position: absolute;
-	top: 20px;
-	left: 10px;
-	width: 500px;
+	top: 15px;
+	left: 0px;
+	padding: 3px 7px;
+	background-color: whiteSmoke;
+	border: 1px solid #DDD;
+	color: #9DA0A4;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+
+	.bus:after {
+		top: 0px;
+	}
+
+}
+
+.relative {
+	position: relative;
+}
+
+#map_canvas {
+	width: 100%;
 	height: 500px;
-	font: normal normal normal 1em Arial, sans-serif;
-	color: black;
-	overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-#firstbus {
-	top: 540px;
-	left: 10px;
-/*> 	background: white url("../media/foreground.png") repeat;*/	
-}
-
-#secondbus {
-	top: 540px;
-	left: 260px;
-/*	background: white url("../media/foreground.png") repeat;*/
-}
-
-#user {
-	position: absolute;
-	top: 780px;
-	left: 0px;
-	width: 520px;
-	height: 60px;
-/*	background: white url("../media/foreground.png") repeat;*/
-	-moz-border-radius-bottomright: 40px;
-	-moz-border-radius-bottomleft: 40px;	
-	border-bottom-right-radius: 40px;
-	border-bottom-left-radius: 40px;	
-	border-top-style: solid;
-	border-top-width: 1px;
-}
-
-#fb-auth {
-	position:absolute;
-	top: 0px;
-	right: 0px;
-	width: 100px;
-	height: 60px;
-	-moz-border-radius-bottomright: 40px;
-	border-bottom-right-radius: 40px;
-	text-align: center;
-	border-left-style: solid;
-	border-left-width: 1px;
-}
-
-#fb-auth-text {
-	position:absolute;
-	top: 17px;	
-	left: 25px;
-	vertical-align: middle;
-}
-
-#user-info {
-	position:absolute;
-	top: 5px;
-	left: 101px;
-	width: 318px;
-	height: 60px;
-	text-align: center;
-	vertical-align: middle;
-}
-
-#preferences {
-	position:absolute;
-	top: 0px;
-	left: 0px;
-	width: 100px;
-	height: 60px;
-	-moz-border-radius-bottomleft: 40px;
-	border-bottom-left-radius: 40px;
-	text-align: center;
-	border-right-style: solid;
-	border-right-width: 1px; 
-}
-
-#preferences-text {
-	position:absolute;
-	top: 17px;	
-	left: 10px;
-	vertical-align: middle;
-}
-
-.businfo {
-	position: absolute;
-	font: normal normal normal 2em Arial, sans-serif;
-	color: black;
-	width: 250px;
-	height: 230px;
-	border-top-style: solid;
-	border-top-width: 1px;	
-}
-
-.example {
-	color: white;
 }
